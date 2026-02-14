@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Marks Zone - Daily Free Loots</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -66,7 +67,7 @@ nav{
 /* ===== SECTION TITLE ===== */
 .section-title{
     padding:20px;
-    font-size:16px;
+    font-size:25px;
     font-weight:600;
 }
 
@@ -189,6 +190,111 @@ footer{
     display:flex;
     gap:10px;
 }
+/* ===== FULL WIDTH CONTAINER ===== */
+.menu-container{
+    width:100%;
+    /* padding-bottom:100px; */
+    background-color:#1a1f35;
+}
+
+/* ===== SECTION ===== */
+.menu-section{
+    width:100%;
+    padding:25px 20px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.menu-title{
+    font-size:20px;
+    font-weight:600;
+    color:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+}
+
+.arrow{
+    transition:0.3s ease;
+}
+
+.menu-section.active .arrow{
+    transform:rotate(180deg);
+}
+
+/* ===== ACCORDION CONTENT ===== */
+.menu-links{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.5s ease;
+}
+
+.menu-links-inner{
+    padding-top:15px;
+}
+
+/* ===== GRID RESPONSIVE ===== */
+.links-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:15px;
+}
+
+.links-grid a{
+    text-decoration:none;
+    color:#aaa;
+    font-size:15px;
+    transition:0.3s;
+}
+
+.links-grid a:hover{
+    color:#fff;
+    padding-left:5px;
+}
+
+/* Tablet */
+@media(min-width:600px){
+    .links-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+/* Small Desktop */
+@media(min-width:900px){
+    .links-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+}
+
+/* Large Desktop */
+@media(min-width:1200px){
+    .links-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+}
+
+/* ===== FLOATING BUTTON ===== */
+.floating-btn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#fff;
+    color:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.5);
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.floating-btn:hover{
+    transform:scale(1.1);
+}
 
 /* ===== DESKTOP ===== */
 @media(min-width:768px){
@@ -244,8 +350,8 @@ footer{
 }
 
 .footer-copy{
-    font-size:13px;
-    opacity:0.6;
+    font-size:15px;
+    opacity:1;
 }
 
 </style>
@@ -323,19 +429,73 @@ footer{
 </div>
 
 <div class="section-title">🛍 Browse by Category</div>
+     
 
-<div class="categories">
+<!-- <div class="categories">
     <div class="category">Campaigns Loots</div>
     <div class="category">Refer & Earn Loot</div>
     <div class="category">Buying Selling Bonus App</div>
     <div class="category">Cashback Deals</div>
     <div class="category">Special Offers</div>
+</div> -->
+<div class="menu-container">
+    <div class="menu-section active">
+        <div class="menu-title">
+            Campaigns
+            <span class="arrow">⌄</span>
+        </div>
+        <div class="menu-links">
+            <div class="menu-links-inner">
+                <div class="links-grid">
+                    <a href="#">Nelson Camp.</a>
+                    <a href="#">AU Card limt Check</a>
+                    <a href="#">Sony TV</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-section">
+        <div class="menu-title">
+            Refer & Earn
+            <span class="arrow">⌄</span>
+        </div>
+        <div class="menu-links">
+            <div class="menu-links-inner">
+                <div class="links-grid">
+                    <a href="#">Hotya</a>
+                    <a href="#">GOSH</a>
+                    <a href="#">XO Live</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-section">
+        <div class="menu-title">
+            Buying Sellig Apps
+            <span class="arrow">⌄</span>
+        </div>
+        <div class="menu-links">
+            <div class="menu-links-inner">
+                <div class="links-grid">
+                    <a href="#">Zip Pay</a>
+                    <a href="#">Hk pay</a>
+                    <a href="#">Pay Bet</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+<div class="floating-btn">≡</div>
+
 
 <section class="telegram">
     <h2>GET INSTANT LOOT ALERTS ON TELEGRAM</h2>
     <p>Don't miss out on exclusive deals.</p>
-    <a href="https://t.me/EarnWithMark41" class="btn btn-blue">Join Marks Zone Telegram</a>
+    <a href="https://t.me/EarnWithMark41" class="btn btn-blue">JOIN US</a>
 </section>
 
 <!-- TELEGRAM MODAL -->
@@ -370,6 +530,30 @@ footer{
 </footer>
 
 <script>
+    const sections = document.querySelectorAll(".menu-section");
+
+sections.forEach(section => {
+    const title = section.querySelector(".menu-title");
+    const content = section.querySelector(".menu-links");
+
+    title.addEventListener("click", () => {
+        section.classList.toggle("active");
+
+        if(section.classList.contains("active")){
+            content.style.maxHeight = content.scrollHeight + "px";
+        } else {
+            content.style.maxHeight = null;
+        }
+    });
+});
+
+/* Open first section */
+window.addEventListener("load", () => {
+    const first = document.querySelector(".menu-section.active .menu-links");
+    if(first){
+        first.style.maxHeight = first.scrollHeight + "px";
+    }
+});
 let telegramLink="https://t.me/EarnWithMark41";
 
 function toggleMenu(){
@@ -392,6 +576,3 @@ function goToTelegram(){
 </script>
 
 </body>
-
-
-
