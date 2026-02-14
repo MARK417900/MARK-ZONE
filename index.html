@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marks Zone - Daily Free Loots</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#0d0f1a;
+    color:white;
+}
+
+/* ===== NAVBAR ===== */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px;
+    background:#111;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{font-weight:700;font-size:18px;}
+.logo span{color:#ff2d2d;}
+
+.menu{
+    display:none;
+    flex-direction:column;
+    gap:10px;
+    background:#111;
+    position:absolute;
+    top:60px;
+    right:0;
+    width:200px;
+    padding:20px;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.hamburger{
+    font-size:22px;
+    cursor:pointer;
+}
+
+/* ===== HERO ===== */
+.hero{
+    text-align:center;
+    padding:40px 20px;
+    background:radial-gradient(circle at top,#1a1f35,#0d0f1a);
+}
+
+.hero h1{font-size:22px;margin-bottom:10px;}
+.hero p{font-size:14px;opacity:0.8;}
+
+/* ===== SECTION TITLE ===== */
+.section-title{
+    padding:20px;
+    font-size:16px;
+    font-weight:600;
+}
+
+/* ===== CARDS ===== */
+.cards{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    padding:0 20px 30px;
+}
+
+.card{
+    background:#1a1f35;
+    padding:15px;
+    border-radius:12px;
+    box-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+
+.card img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+    border-radius:13px;
+    margin-bottom:15px;
+}
+
+.card h3{font-size:14px;margin-bottom:8px;}
+
+.badges{
+    font-size:12px;
+    margin-bottom:10px;
+    color:#4caf50;
+}
+
+.card-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.btn{
+    flex:1;
+    padding:12px;
+    border-radius:8px;
+    border:none;
+    font-weight:600;
+    cursor:pointer;
+    font-size:13px;
+}
+
+.btn-blue{
+    background:linear-gradient(45deg,#0d6efd,#0049b7);
+    color:white;
+}
+
+.btn-red{
+    background:linear-gradient(45deg,#ff1e1e,#a50000);
+    color:white;
+}
+
+/* ===== CATEGORIES ===== */
+.categories{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    padding:0 20px 30px;
+}
+
+.category{
+    background:#1a1f35;
+    padding:15px;
+    text-align:center;
+    border-radius:10px;
+    font-size:13px;
+}
+
+/* ===== TELEGRAM SECTION ===== */
+.telegram{
+    text-align:center;
+    padding:30px 20px;
+    background:#111;
+}
+
+.telegram h2{font-size:16px;margin-bottom:10px;}
+.telegram p{font-size:13px;opacity:0.8;margin-bottom:15px;}
+
+/* ===== FOOTER ===== */
+footer{
+    text-align:center;
+    padding:20px;
+    font-size:12px;
+    background:#0a0c14;
+    opacity:0.7;
+}
+
+/* ===== MODAL ===== */
+.modal{
+    display:none;
+    position:fixed;
+    z-index:2000;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+    justify-content:center;
+    align-items:center;
+}
+
+.modal-content{
+    background:#1a1f35;
+    padding:20px;
+    border-radius:10px;
+    width:90%;
+    max-width:350px;
+    text-align:center;
+}
+
+.modal-buttons{
+    margin-top:15px;
+    display:flex;
+    gap:10px;
+}
+
+/* ===== DESKTOP ===== */
+@media(min-width:768px){
+    .menu{
+        display:flex!important;
+        position:static;
+        flex-direction:row;
+        gap:20px;
+        width:auto;
+        padding:0;
+    }
+    .hamburger{display:none;}
+    .cards{flex-direction:row;}
+    .card{flex:1;}
+    .categories{grid-template-columns:repeat(5,1fr);}
+}
+/* ===== PREMIUM FOOTER ===== */
+.premium-footer{
+    background:#000;
+    text-align:center;
+    padding:60px 20px;
+}
+
+.footer-logo-img{
+    width:100%;
+    max-width:300px;
+    height:auto;
+    margin-bottom:0px;
+    filter:brightness(1.3) contrast(1.2);
+}
+
+.footer-links{
+    margin-top:20px;
+    font-size:14px;
+}
+
+.footer-links a{
+    color:#ccc;
+    text-decoration:none;
+    margin:0 8px;
+    transition:0.3s;
+}
+
+.footer-links a:hover{
+    color:#ff2d2d;
+}
+
+.footer-divider{
+    height:1px;
+    background:rgba(255,255,255,0.2);
+    margin:30px auto;
+    width:80%;
+}
+
+.footer-copy{
+    font-size:13px;
+    opacity:0.6;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">MARKS <span>ZONE</span></div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div class="menu" id="menu">
+        <a href="#">Home</a>
+        <a href="#">Free Loots</a>
+        <a href="#">Campaigns</a>
+        <a href="https://t.me/Mark41_helperBot">Contact</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>🔥 DAILY FREE LOOTS & OFFERS 🔥</h1>
+    <p>Trusted Deals | Verified Offers | Updated Daily</p>
+</section>
+
+<div class="section-title">🎁 Latest Free Loots</div>
+
+<div class="cards">
+
+    <div class="card">
+        <img src="Screenshot_20260214-062608.jpg" alt="">
+        <h3>Free ₹50 Paytm Cashback</h3>
+        <div class="badges">✔ Verified Today<br>✔ Limited Time</div>
+        <div class="card-buttons">
+            <button class="btn btn-red">JOIN NOW</button>
+            <button class="btn btn-blue" onclick="openTelegramModal('https://t.me/EarnWithMark41/1')">DETAILS</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="Screenshot_20260214-062608.jpg" alt="">
+        <h3>₹100 Free Gift Card</h3>
+        <div class="badges">✔ Verified Today<br>✔ Limited Offer</div>
+        <div class="card-buttons">
+            <button class="btn btn-red">JOIN NOW</button>
+            <button class="btn btn-blue" onclick="openTelegramModal('https://t.me/EarnWithMark41/2')">DETAILS</button>
+        </div>
+    </div>
+    <div class="card">
+        <img src="Screenshot_20260214-062608.jpg" alt="">
+        <h3>₹100 Free Gift Card</h3>
+        <div class="badges">✔ Verified Today<br>✔ Limited Offer</div>
+        <div class="card-buttons">
+            <button class="btn btn-red">JOIN NOW</button>
+            <button class="btn btn-blue" onclick="openTelegramModal('https://t.me/EarnWithMark41/2')">DETAILS</button>
+        </div>
+    </div>
+    <div class="card">
+        <img src="Screenshot_20260214-062608.jpg" alt="">
+        <h3>₹100 Free Gift Card</h3>
+        <div class="badges">✔ Verified Today<br>✔ Limited Offer</div>
+        <div class="card-buttons">
+            <button class="btn btn-red">JOIN NOW</button>
+            <button class="btn btn-blue" onclick="openTelegramModal('https://t.me/EarnWithMark41/2')">DETAILS</button>
+        </div>
+    </div>
+    <div class="card">
+        <img src="Screenshot_20260214-062608.jpg" alt="">
+        <h3>₹100 Free Gift Card</h3>
+        <div class="badges">✔ Verified Today<br>✔ Limited Offer</div>
+        <div class="card-buttons">
+            <button class="btn btn-red">JOIN NOW</button>
+            <button class="btn btn-blue" onclick="openTelegramModal('https://t.me/EarnWithMark41/2')">DETAILS</button>
+        </div>
+    </div>
+
+</div>
+
+<div class="section-title">🛍 Browse by Category</div>
+
+<div class="categories">
+    <div class="category">Campaigns Loots</div>
+    <div class="category">Refer & Earn Loot</div>
+    <div class="category">Buying Selling Bonus App</div>
+    <div class="category">Cashback Deals</div>
+    <div class="category">Special Offers</div>
+</div>
+
+<section class="telegram">
+    <h2>GET INSTANT LOOT ALERTS ON TELEGRAM</h2>
+    <p>Don't miss out on exclusive deals.</p>
+    <a href="https://t.me/EarnWithMark41" class="btn btn-blue">Join Marks Zone Telegram</a>
+</section>
+
+<!-- TELEGRAM MODAL -->
+<div id="telegramModal" class="modal">
+    <div class="modal-content">
+        <h3>More Details</h3>
+        <p>Check our Telegram for more details about this offer.</p>
+        <div class="modal-buttons">
+            <button class="btn btn-blue" onclick="goToTelegram()">OK</button>
+            <button class="btn btn-red" onclick="closeTelegramModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+<!-- PREMIUM FOOTER -->
+<footer class="premium-footer">
+
+    <!-- IMAGE LOGO -->
+    <img src="logo.jpg" alt="Marks Zone Official Logo" class="footer-logo-img">
+
+    <div class="footer-links">
+        <a href="#">Home</a> |
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Disclaimer</a> |
+        <a href="#">Contact</a>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <p class="footer-copy">
+        © 2026 Marks Zone. All Rights Reserved.
+    </p>
+
+</footer>
+
+<script>
+let telegramLink="https://t.me/EarnWithMark41";
+
+function toggleMenu(){
+    const menu=document.getElementById("menu");
+    menu.style.display=menu.style.display==="flex"?"none":"flex";
+}
+
+function openTelegramModal(link){
+    telegramLink=link;
+    document.getElementById("telegramModal").style.display="flex";
+}
+
+function closeTelegramModal(){
+    document.getElementById("telegramModal").style.display="none";
+}
+
+function goToTelegram(){
+    window.open(telegramLink,"_blank");
+}
+</script>
+
+</body>
+</html> arrange the complete code and make sure logo in the bottom must be visible with bright colours
