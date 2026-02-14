@@ -6,7 +6,7 @@
 <title>Marks Zone - Daily Free Loots</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 
@@ -89,7 +89,6 @@ nav{
 .card img{
     width:100%;
     height:150px;
-    object-fit:cover;
     border-radius:13px;
     margin-bottom:15px;
 }
@@ -118,12 +117,12 @@ nav{
 }
 
 .btn-blue{
-    background:linear-gradient(45deg,#0d6efd,#0049b7);
+    background:linear-gradient(45deg,#a1b0c5,#0049b7);
     color:white;
 }
 
 .btn-red{
-    background:linear-gradient(45deg,#ff1e1e,#a50000);
+    background:linear-gradient(45deg,#da6666,#86face);
     color:white;
 }
 
@@ -195,6 +194,130 @@ footer{
     width:100%;
     /* padding-bottom:100px; */
     background-color:#1a1f35;
+
+    
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#0d0f1a;
+    color:#fff;
+}
+/* ===== SECTION ===== */
+.partners-section{
+    padding:20px;
+    background:linear-gradient(135deg,#585c6e,#585c6e);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+/* ===== SLIDER ===== */
+/* Fade edges */
+.partners-slider::before,
+.partners-slider::after{
+    content:"";
+    position:absolute;
+    top:0;
+    width:120px;
+    height:100%;
+    z-index:2;
+    pointer-events:none;
+}
+
+.partners-slider::before{
+    left:0;
+    background:linear-gradient(to right,#0f1220,transparent);
+}
+
+.partners-slider::after{
+    right:0;
+    background:linear-gradient(to left,#0f1220,transparent);
+}
+
+/* ===== TRACK ===== */
+.partners-track{
+    display:flex;
+    align-items:center;
+    gap:60px;
+    width:max-content;
+    animation:scroll 30s linear infinite;
+}
+
+/* ===== CARD ===== */
+.partner{
+    background:rgba(255,255,255,0.08);
+    padding:18px 35px;
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-width:160px;
+    border:1px solid rgba(255,255,255,0.1);
+    transition:0.4s ease;
+}
+
+.partner img{
+    height:45px;
+    object-fit:contain;
+    filter:brightness(0) invert(1);
+    transition:0.4s ease;
+}
+
+/* Hover */
+.partner:hover{
+    transform:translateY(-8px) scale(1.05);
+    background:rgba(255,255,255,0.15);
+}
+
+.partner:hover img{
+    filter:none;
+}
+
+/* Pause on hover */
+.partners-slider:hover .partners-track{
+    animation-play-state:paused;
+}
+
+/* ===== LEFT → RIGHT ANIMATION ===== */
+@keyframes scroll{
+    0%{
+        transform:translateX(-50%);
+    }
+    100%{
+        transform:translateX(0);
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+
+    .partners-title{
+        font-size:27px;
+    }
+
+    .partners-track{
+        gap:30px;
+    }
+
+    .partner{
+        padding:12px 20px;
+        min-width:120px;
+    }
+
+    .partner img{
+        height:30px;
+    }
+
+    .partners-slider::before,
+    .partners-slider::after{
+        width:60px;
+    }
 }
 
 /* ===== SECTION ===== */
@@ -315,7 +438,7 @@ footer{
 .premium-footer{
     background:#000;
     text-align:center;
-    padding:60px 20px;
+    padding:40px 20px;
 }
 
 .footer-logo-img{
@@ -364,9 +487,10 @@ footer{
     <div class="hamburger" onclick="toggleMenu()">☰</div>
     <div class="menu" id="menu">
         <a href="#">Home</a>
-        <a href="#">Free Loots</a>
-        <a href="#">Campaigns</a>
+        <a href="https://t.me/EarnWithMark41">Join Channel</a>
+        <a href="#">Join Community</a>
         <a href="https://t.me/Mark41_helperBot">Contact</a>
+        <a href="#">About</a>
     </div>
 </nav>
 
@@ -380,15 +504,15 @@ footer{
 <div class="cards">
 
     <div class="card">
-        <img src="Screenshot_20260214-062608.jpg" alt="">
-        <h3>Free ₹50 Paytm Cashback</h3>
-        <div class="badges">✔ Verified Today<br>✔ Limited Time</div>
+        <img src="coming.jpg" alt="">
+        <h3>Comming Soon...</h3>
+        <div class="badges">✔ Stay connected<br>✔ join our official channel</div>
         <div class="card-buttons">
             <button class="btn btn-red">JOIN NOW</button>
-            <button class="btn btn-blue" onclick="openTelegramModal('https://t.me/EarnWithMark41/1')">DETAILS</button>
+            <button class="btn btn-blue" onclick="openTelegramModal('https://t.me/EarnWithMark41/1')">MORE DETAILS</button>
         </div>
     </div>
-
+<!-- 
     <div class="card">
         <img src="Screenshot_20260214-062608.jpg" alt="">
         <h3>₹100 Free Gift Card</h3>
@@ -424,21 +548,11 @@ footer{
             <button class="btn btn-red">JOIN NOW</button>
             <button class="btn btn-blue" onclick="openTelegramModal('https://t.me/EarnWithMark41/2')">DETAILS</button>
         </div>
-    </div>
+    </div> -->
 
 </div>
-
-<div class="section-title">🛍 Browse by Category</div>
-     
-
-<!-- <div class="categories">
-    <div class="category">Campaigns Loots</div>
-    <div class="category">Refer & Earn Loot</div>
-    <div class="category">Buying Selling Bonus App</div>
-    <div class="category">Cashback Deals</div>
-    <div class="category">Special Offers</div>
-</div> -->
 <div class="menu-container">
+    <div class="section-title">🛍 Browse by Category</div>
     <div class="menu-section active">
         <div class="menu-title">
             Campaigns
@@ -488,30 +602,36 @@ footer{
     </div>
 
 </div>
+<section class="partners-section">
+    <h2 class="partners-title">🤝 Our Official Partners</h2>
+    <div class="partners-slider">
+        <div class="partners-track" id="partnersTrack">
 
-<div class="floating-btn">≡</div>
+            <div class="partner">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+            </div>
 
+            <div class="partner">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Flipkart_logo.png" alt="Flipkart">
+            </div>
 
-<section class="telegram">
-    <h2>GET INSTANT LOOT ALERTS ON TELEGRAM</h2>
-    <p>Don't miss out on exclusive deals.</p>
-    <a href="https://t.me/EarnWithMark41" class="btn btn-blue">JOIN US</a>
-</section>
+            <div class="partner">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Paytm_logo.png" alt="Paytm">
+            </div>
 
-<!-- TELEGRAM MODAL -->
-<div id="telegramModal" class="modal">
-    <div class="modal-content">
-        <h3>More Details</h3>
-        <p>Check our Telegram for more details about this offer.</p>
-        <div class="modal-buttons">
-            <button class="btn btn-blue" onclick="goToTelegram()">OK</button>
-            <button class="btn btn-red" onclick="closeTelegramModal()">Cancel</button>
+            <div class="partner">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/PhonePe_Logo.svg" alt="PhonePe">
+            </div>
+
+            <div class="partner">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Fampay_logo.png" alt="Fampay">
+            </div>
+
         </div>
     </div>
-</div>
+</section>
 <!-- PREMIUM FOOTER -->
 <footer class="premium-footer">
-
     <!-- IMAGE LOGO -->
     <img src="logo.jpg" alt="Marks Zone Official Logo" class="footer-logo-img">
 
@@ -573,6 +693,11 @@ function closeTelegramModal(){
 function goToTelegram(){
     window.open(telegramLink,"_blank");
 }
+/* Duplicate logos for seamless infinite loop */
+window.addEventListener("load", function(){
+    const track = document.getElementById("partnersTrack");
+    track.innerHTML += track.innerHTML;
+});
 </script>
 
 </body>
