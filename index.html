@@ -67,7 +67,7 @@ nav{
 /* ===== SECTION TITLE ===== */
 .section-title{
     padding:20px;
-    font-size:25px;
+    font-size:22px;
     font-weight:600;
 }
 
@@ -114,16 +114,28 @@ nav{
     font-weight:600;
     cursor:pointer;
     font-size:13px;
+    text-align: center;
+    text-decoration: none;
 }
 
 .btn-blue{
-    background:linear-gradient(45deg,#a1b0c5,#0049b7);
-    color:white;
+  background-color: #3d6ed652;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 40px;
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
 }
 
 .btn-red{
-    background:linear-gradient(45deg,#da6666,#86face);
-    color:white;
+  background-color: #5d5a5f59;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 40px;
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
 }
 
 /* ===== CATEGORIES ===== */
@@ -189,6 +201,45 @@ footer{
     display:flex;
     gap:10px;
 }
+/* ===== ABOUT MODAL ===== */
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+    justify-content:center;
+    align-items:center;
+    z-index:3000;
+}
+
+.modal-content{
+    background:#1a1f35;
+    padding:30px;
+    border-radius:15px;
+    width:90%;
+    max-width:400px;
+    text-align:center;
+    animation:fadeIn 0.3s ease;
+}
+
+.modal-content h2{
+    margin-bottom:15px;
+}
+
+.modal-content p{
+    font-size:14px;
+    margin-bottom:20px;
+    opacity:0.8;
+    line-height:1.6;
+}
+
+@keyframes fadeIn{
+    from{transform:scale(0.8);opacity:0;}
+    to{transform:scale(1);opacity:1;}
+}
 /* ===== FULL WIDTH CONTAINER ===== */
 .menu-container{
     width:100%;
@@ -211,7 +262,7 @@ body{
 /* ===== SECTION ===== */
 .partners-section{
     padding:20px;
-    background:linear-gradient(135deg,#585c6e,#585c6e);
+    background:linear-gradient(135deg,#002fff00,#585c6e);
     text-align:center;
     position:relative;
     overflow:hidden;
@@ -251,14 +302,14 @@ body{
 
 /* ===== CARD ===== */
 .partner{
-    background:rgba(255,255,255,0.08);
+    background:rgba(0, 0, 0, 0.08);
     padding:18px 35px;
     border-radius:16px;
     display:flex;
     align-items:center;
     justify-content:center;
     min-width:160px;
-    border:1px solid rgba(255,255,255,0.1);
+    border:1px solid rgba(255, 255, 255, 0.329);
     transition:0.4s ease;
 }
 
@@ -272,7 +323,7 @@ body{
 /* Hover */
 .partner:hover{
     transform:translateY(-8px) scale(1.05);
-    background:rgba(255,255,255,0.15);
+    background:rgb(255, 255, 255);
 }
 
 .partner:hover img{
@@ -298,7 +349,7 @@ body{
 @media(max-width:768px){
 
     .partners-title{
-        font-size:15px;
+        font-size:17px;
     }
 
     .partners-track{
@@ -328,7 +379,7 @@ body{
 }
 
 .menu-title{
-    font-size:15px;
+    font-size:17px;
     font-weight:600;
     color:#fff;
     display:flex;
@@ -487,10 +538,11 @@ body{
     <div class="hamburger" onclick="toggleMenu()">☰</div>
     <div class="menu" id="menu">
         <a href="#">Home</a>
-        <a href="https://t.me/EarnWithMark41">Join Channel</a>
-        <a href="#">Join Community</a>
+        <a href="https://t.me/EarnWithMark41">Channel</a>
+        <a href="https://t.me/+pNRg_oJqSaFlZWE1">Community</a>
+        <a href="https://t.me/Mark41_helperBot">fedback</a>
         <a href="https://t.me/Mark41_helperBot">Contact</a>
-        <a href="#">About</a>
+        <a href="#" onclick="openAbout()">About</a>
     </div>
 </nav>
 
@@ -508,67 +560,25 @@ body{
         <h3>Comming Soon...</h3>
         <div class="badges">✔ Stay connected<br>✔ join our official channel</div>
         <div class="card-buttons">
-            <button class="btn btn-red">JOIN NOW</button>
-            <button class="btn btn-blue" onclick="openTelegramModal('https://t.me/EarnWithMark41/1')">MORE DETAILS</button>
+            <a class="btn btn-red" href="https://t.me/EarnWithMark41" target="_blank">JOIN NOW</a>
+            <a class="btn btn-blue" href="https://t.me/EarnWithMark41" target="_blank">MORE INFO</a>
         </div>
     </div>
-<!-- 
-    <div class="card">
-        <img src="Screenshot_20260214-062608.jpg" alt="">
-        <h3>₹100 Free Gift Card</h3>
-        <div class="badges">✔ Verified Today<br>✔ Limited Offer</div>
-        <div class="card-buttons">
-            <button class="btn btn-red">JOIN NOW</button>
-            <button class="btn btn-blue" onclick="openTelegramModal('https://t.me/EarnWithMark41/2')">DETAILS</button>
-        </div>
+</div>
+<!-- ABOUT MODAL -->
+<div class="modal" id="aboutModal">
+    <div class="modal-content">
+        <h2>About Marks Zone</h2>
+        <p>
+            Marks Zone provides daily verified free loots, trusted deals,
+            and campaign updates. Our mission is to share real and safe offers
+            with our community.
+        </p>
+        <button class="btn btn-blue" onclick="closeAbout()">OK</button>
     </div>
-    <div class="card">
-        <img src="Screenshot_20260214-062608.jpg" alt="">
-        <h3>₹100 Free Gift Card</h3>
-        <div class="badges">✔ Verified Today<br>✔ Limited Offer</div>
-        <div class="card-buttons">
-            <button class="btn btn-red">JOIN NOW</button>
-            <button class="btn btn-blue" onclick="openTelegramModal('https://t.me/EarnWithMark41/2')">DETAILS</button>
-        </div>
-    </div>
-    <div class="card">
-        <img src="Screenshot_20260214-062608.jpg" alt="">
-        <h3>₹100 Free Gift Card</h3>
-        <div class="badges">✔ Verified Today<br>✔ Limited Offer</div>
-        <div class="card-buttons">
-            <button class="btn btn-red">JOIN NOW</button>
-            <button class="btn btn-blue" onclick="openTelegramModal('https://t.me/EarnWithMark41/2')">DETAILS</button>
-        </div>
-    </div>
-    <div class="card">
-        <img src="Screenshot_20260214-062608.jpg" alt="">
-        <h3>₹100 Free Gift Card</h3>
-        <div class="badges">✔ Verified Today<br>✔ Limited Offer</div>
-        <div class="card-buttons">
-            <button class="btn btn-red">JOIN NOW</button>
-            <button class="btn btn-blue" onclick="openTelegramModal('https://t.me/EarnWithMark41/2')">DETAILS</button>
-        </div>
-    </div> -->
-
 </div>
 <div class="menu-container">
     <div class="section-title">🛍 Browse by Category</div>
-    <div class="menu-section active">
-        <div class="menu-title">
-            Campaigns
-            <span class="arrow">⌄</span>
-        </div>
-        <div class="menu-links">
-            <div class="menu-links-inner">
-                <div class="links-grid">
-                    <a href="#">Nelson Camp.</a>
-                    <a href="#">AU Card limt Check</a>
-                    <a href="#">Sony TV</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="menu-section">
         <div class="menu-title">
             Refer & Earn
@@ -577,30 +587,28 @@ body{
         <div class="menu-links">
             <div class="menu-links-inner">
                 <div class="links-grid">
-                    <a href="#">Hotya</a>
-                    <a href="#">GOSH</a>
-                    <a href="#">XO Live</a>
+                    <a href="https://hy1.in/fJjCrLT">Hotya</a>
+                    <a href="https://go1.sh/fK05wOe">GOSH</a>
+                    <a href="https://play.xolive.tv?code=MN6EAH">XO Live</a>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="menu-section">
+    <div class="menu-section active">
         <div class="menu-title">
-            Buying Sellig Apps
+            Campaigns
             <span class="arrow">⌄</span>
         </div>
         <div class="menu-links">
             <div class="menu-links-inner">
                 <div class="links-grid">
-                    <a href="#">Zip Pay</a>
-                    <a href="#">Hk pay</a>
-                    <a href="#">Pay Bet</a>
+                    <a href="https://jodcampaign.com/o/nielsenctv/dyzgebi">Nelson Camp.</a>
+                    <a href="https://cgrj.in/c/c3wvgtis">AU Card limt Check</a>
+                    <a href="#">Sony TV</a>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 <section class="partners-section">
     <h2 class="partners-title">🤝 Our Official Partners</h2>
@@ -608,23 +616,22 @@ body{
         <div class="partners-track" id="partnersTrack">
 
             <div class="partner">
+                <a href="https://amazon.in" target="_blank">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+                </a>
             </div>
 
             <div class="partner">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Flipkart_logo.png" alt="Flipkart">
+                <a href="https://www.flipkart.com" target="_blank"> <img src="flipkart.svg" alt="flipkart"></a>
+               
             </div>
 
             <div class="partner">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Paytm_logo.png" alt="Paytm">
+                <a href="#" target="_blank">
+                <img src="fampay.svg" alt="Fampay"></a>
             </div>
-
             <div class="partner">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/PhonePe_Logo.svg" alt="PhonePe">
-            </div>
-
-            <div class="partner">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Fampay_logo.png" alt="Fampay">
+               <a href="https://t.me/MSofficialTeam" style="text-decoration: none; color: inherit; font-weight: bold; font-size: 18px;"> MS Official </a>
             </div>
 
         </div>
@@ -644,7 +651,7 @@ body{
     <div class="footer-divider"></div>
 
     <p class="footer-copy">
-        Made with ❤ and ☕ in India
+        Made with ❤️ and ☕ in India
     </p>
 
 </footer>
@@ -698,7 +705,13 @@ window.addEventListener("load", function(){
     const track = document.getElementById("partnersTrack");
     track.innerHTML += track.innerHTML;
 });
+function openAbout(){
+    document.getElementById("aboutModal").style.display="flex";
+}
+
+function closeAbout(){
+    document.getElementById("aboutModal").style.display="none";
+}
 </script>
 
 </body>
-
