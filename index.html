@@ -7,9 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#2563eb">
-
 <style>
 body{
     font-family:'Poppins',sans-serif;
@@ -956,17 +953,6 @@ document.addEventListener("click", function(e){
 function closeInfoModal(){
     document.getElementById("infoModal").style.display = "none";
 }
-
-
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("/service-worker.js")
-      .then(reg => console.log("Service Worker Registered"))
-      .catch(err => console.log("SW registration failed", err));
-  });
-
-
 </script>
 
 </body>
